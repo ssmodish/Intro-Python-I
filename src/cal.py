@@ -22,3 +22,25 @@ and does the following:
 import sys
 import calendar
 from datetime import datetime
+
+args = (sys.argv[1:])
+# print(*args)
+
+
+def cal(month_year):
+    now = datetime.today()
+
+    def build_cal(month=now.month, year=now.year):
+        curr_cal = calendar.month(int(year), int(month))
+        print(curr_cal)
+
+    build_cal(*month_year)
+
+
+if len(args) > 2 or int(args[0]) > 12:
+    print("Cal.py can take up to two arguments. The output will be as follows:")
+    print("1. No arguments - prints the calendar for the current month")
+    print("2. One argument - prints the calendar for that month of the current year")
+    print("3. Two arguments - prints the calendar for the month and year provided")
+else:
+    cal(args)
